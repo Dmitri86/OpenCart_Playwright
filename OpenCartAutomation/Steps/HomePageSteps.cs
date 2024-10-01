@@ -16,6 +16,12 @@ public class HomePageSteps(IPage page) : BaseSteps(page)
         return new SearchResultSteps(page);
     }
 
+    public CategorySteps SelectCategory(string category, string subCategory)
+    {
+        _homePage.SelectCategory(category, subCategory);
+        return new CategorySteps(page);
+    }
+
     public HomePageSteps VerifyFeaturedProducts(IList<ProductModel> expectedProducts)
     {
         var featuredElements = _homePage.GetFeaturedProducts().Result;

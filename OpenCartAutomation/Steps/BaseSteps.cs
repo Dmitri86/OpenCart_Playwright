@@ -11,4 +11,6 @@ public abstract class BaseSteps(IPage page)
         Page.GotoAsync("https://naveenautomationlabs.com/opencart").Wait();
         return new HomePageSteps(Page);
     }
+
+
 }
