@@ -3,6 +3,7 @@ using OpenCartAutomation.Steps;
 
 namespace OpenCartAutomation.Tests;
 
+[TestFixture]
 public class SearchTests : PageTest
 {
     [TestCaseSource(nameof(SearchElements))]

@@ -8,5 +8,7 @@ public class ProductModel
 
     public string CurrentPrice { get; set; }
 
-    public string ExcludeTax { get; set; }
+    public string OldPrice { get; set; }
+
+    public string ExcludeTaxPrice { get; set; }
 }
