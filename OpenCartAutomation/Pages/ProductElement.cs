@@ -53,7 +53,7 @@ public class ProductElement(ILocator locator)
         {
             PriceType.Current => new Regex(@"^[$]\d+.\d+.?\d+").Match(priceLine).Value,
             PriceType.Old => new Regex(@"\W([$]\d+[.]\d+)\W").Match(priceLine).Groups.Values.Last().Value,
-            PriceType.ExcludeTax => new Regex(@"\W([$]\d+.\d+)$").Match(priceLine).Groups.Values.Last().Value,
+            PriceType.ExcludeTax => new Regex(@"\W([$]\d+.+\d+)$").Match(priceLine).Groups.Values.Last().Value,
             _ => throw new NotImplementedException($"Price type [{priceType}] is not implemented")
         };
     }

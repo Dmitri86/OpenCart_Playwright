@@ -18,20 +18,8 @@ public class SearchResultSteps(IPage page) : BaseSteps(page)
 
     public SearchResultSteps VerifyFoundProducts(IList<ProductModel> expectedProducts)
     {
-        var actualProductLocators = _searchResultPage.GetFoundProducts().Result;
-        actualProductLocators.Count.Should().Be(expectedProducts.Count);
-        var actualProducts = new List<ProductModel>();
-        foreach (var locator in actualProductLocators)
-        {
-            actualProducts.Add(new ProductModel
-            {
-                Title = locator.GetTitle().Result,
-                Description = locator.GetDescription().Result,
-                CurrentPrice = locator.GetCurrentPrice().Result
-            });
-        }
-
-        actualProducts.Should().BeEquivalentTo(expectedProducts);
+        var actualProductsElements = _searchResultPage.GetFoundProducts().Result;
+        VerifyProductsAreEqual(actualProductsElements, expectedProducts);
         return this;
     }
 }

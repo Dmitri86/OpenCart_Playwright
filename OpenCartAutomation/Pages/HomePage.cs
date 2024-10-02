@@ -9,6 +9,7 @@ public class HomePage(IPage page)
     private readonly ILocator _featuredProducts = page.Locator(".product-layout");
     private readonly ILocator _navigateBar = page.Locator("#menu");
     public  HeaderElement HeaderElement => new (page.Locator("#top"));
+    public NavigationBarElement NavBar => new(page.Locator("#menu"));
 
     public async Task TypeSearchText(string searchText)
     {
@@ -18,12 +19,6 @@ public class HomePage(IPage page)
     public async Task ClickSearchButton()
     {
         await _searchButton.ClickAsync();
-    }
-
-    public void SelectCategory(string category, string subCategory)
-    {
-        var navBar = new NavigationBarElement(_navigateBar);
-        navBar.SelectElement(category, subCategory).Wait();
     }
 
     public async Task<List<ProductElement>> GetFeaturedProducts()

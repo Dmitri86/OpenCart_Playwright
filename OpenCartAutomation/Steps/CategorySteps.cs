@@ -19,20 +19,8 @@ public class CategorySteps(IPage page) : BaseSteps(page)
 
     public CategorySteps VerifyFoundProducts(IList<ProductModel> expectedProducts)
     {
-        var actualProductLocators = _categoryPage.GetFoundProducts().Result;
-        actualProductLocators.Count.Should().Be(expectedProducts.Count);
-        var actualProducts = new List<ProductModel>();
-        foreach (var locator in actualProductLocators)
-        {
-            actualProducts.Add(new ProductModel
-            {
-                Title = locator.GetTitle().Result,
-                Description = locator.GetDescription().Result,
-                CurrentPrice = locator.GetCurrentPrice().Result
-            });
-        }
-
-        actualProducts.Should().BeEquivalentTo(expectedProducts);
+        var actualProductsElements = _categoryPage.GetFoundProducts().Result;
+        VerifyProductsAreEqual(actualProductsElements, expectedProducts);
         return this;
     }
 }

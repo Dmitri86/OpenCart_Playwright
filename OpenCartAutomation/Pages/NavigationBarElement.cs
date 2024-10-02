@@ -10,7 +10,7 @@ public class NavigationBarElement(ILocator locator)
         locator.Locator($"//li[@class='dropdown open']//a[contains(text(), '{subCategoryName}')]");
 
 
-    public async Task SelectElement(string category, string subCategory)
+    public async Task SelectCategory(string category, string subCategory)
     {
         await _category(category).ClickAsync();
         if (!string.IsNullOrEmpty(subCategory))

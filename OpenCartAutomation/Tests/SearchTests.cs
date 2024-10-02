@@ -25,7 +25,9 @@ public class SearchTests : PageTest
                 Title = "iPhone",
                 Description =
                     "iPhone is a revolutionary new mobile phone that allows you to make a call by simply tapping a name o..",
-                CurrentPrice = "$123.20"
+                CurrentPrice = "$123.20",
+                OldPrice = string.Empty,
+                ExcludeTaxPrice = "$101.00"
             }
         ]);
 
@@ -35,7 +37,9 @@ public class SearchTests : PageTest
                 Title = "MacBook",
                 Description =
                     "Intel Core 2 Duo processor Powered by an Intel Core 2 Duo processor at speeds up to 2.16GHz, the..",
-                CurrentPrice = "$602.00"
+                CurrentPrice = "$602.00",
+                OldPrice = string.Empty,
+                ExcludeTaxPrice = "$500.00"
             },
 
             new()
@@ -43,7 +47,9 @@ public class SearchTests : PageTest
                 Title = "MacBook Air",
                 Description =
                     "MacBook Air is ultrathin, ultraportable, and ultra unlike anything else. But you don’t lose in..",
-                CurrentPrice = "$1,202.00"
+                CurrentPrice = "$1,202.00",
+                OldPrice = string.Empty,
+                ExcludeTaxPrice = "$1,000.00"
             },
 
             new()
@@ -51,7 +57,9 @@ public class SearchTests : PageTest
                 Title = "MacBook Pro",
                 Description =
                     "Latest Intel mobile architecture Powered by the most advanced mobile processors from Intel, ..",
-                CurrentPrice = "$2,000.00"
+                CurrentPrice = "$2,000.00",
+                OldPrice = string.Empty,
+                ExcludeTaxPrice = "$2,000.00"
             }
         ]);
 
