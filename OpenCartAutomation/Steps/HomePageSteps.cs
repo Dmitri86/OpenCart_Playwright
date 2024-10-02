@@ -9,10 +9,16 @@ public class HomePageSteps(IPage page) : BaseSteps(page)
 {
     private readonly HomePage _homePage = new(page);
 
+    public LoginSteps SelectLoginOption()
+    {
+        _homePage.HeaderElement.SelectLoginUser().Wait();
+        return new LoginSteps(page);
+    }
+
     public SearchResultSteps SearchProduct(string productName)
     {
-        _homePage.TypeSearchText(productName);
-        _homePage.ClickSearchButton();
+        _homePage.TypeSearchText(productName).Wait();
+        _homePage.ClickSearchButton().Wait();
         return new SearchResultSteps(page);
     }
 

@@ -36,12 +36,12 @@ public class ProductElement(ILocator locator)
         return GetPrice(PriceType.ExcludeTax);
     }
 
-    public async void ClickAddToCart()
+    public async Task ClickAddToCart()
     {
         await _addToCart.ClickAsync();
     }
 
-    public async void ClickToWishList()
+    public async Task ClickToWishList()
     {
         await _addToWishList.ClickAsync();
     }

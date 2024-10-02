@@ -8,13 +8,14 @@ public class HomePage(IPage page)
     private readonly ILocator _searchButton = page.Locator("#search button");
     private readonly ILocator _featuredProducts = page.Locator(".product-layout");
     private readonly ILocator _navigateBar = page.Locator("#menu");
+    public  HeaderElement HeaderElement => new (page.Locator("#top"));
 
-    public async void TypeSearchText(string searchText)
+    public async Task TypeSearchText(string searchText)
     {
         await _searchField.FillAsync(searchText);
     }
 
-    public async void ClickSearchButton()
+    public async Task ClickSearchButton()
     {
         await _searchButton.ClickAsync();
     }
@@ -22,7 +23,7 @@ public class HomePage(IPage page)
     public void SelectCategory(string category, string subCategory)
     {
         var navBar = new NavigationBarElement(_navigateBar);
-        navBar.SelectElement(category, subCategory);
+        navBar.SelectElement(category, subCategory).Wait();
     }
 
     public async Task<List<ProductElement>> GetFeaturedProducts()
