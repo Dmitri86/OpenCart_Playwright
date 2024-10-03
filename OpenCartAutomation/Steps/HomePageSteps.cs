@@ -1,4 +1,5 @@
-﻿using Microsoft.Playwright;
+﻿using FluentAssertions;
+using Microsoft.Playwright;
 using OpenCartAutomation.Models;
 using OpenCartAutomation.Pages;
 
@@ -21,10 +22,23 @@ public class HomePageSteps(IPage page) : BaseSteps(page)
         return new SearchResultSteps(page);
     }
 
+    public HomePageSteps AddProductToWishListUnauthorizedUser(string productName)
+    {
+        _homePage.AddProductToWishList(productName).Wait();
+        return this;
+    }
+
     public CategorySteps SelectCategory(string category, string subCategory)
     {
         _homePage.NavBar.SelectCategory(category, subCategory).Wait();
         return new CategorySteps(page);
+    }
+
+    public HomePageSteps VerifyAlertMessageIsCorrect(string expectedMessage)
+    {
+        var actualMessage = _homePage.GetAlertMessage().Result;
+        actualMessage.Should().Contain(expectedMessage);
+        return this;
     }
 
     public HomePageSteps VerifyFeaturedProducts(IList<ProductModel> expectedProducts)

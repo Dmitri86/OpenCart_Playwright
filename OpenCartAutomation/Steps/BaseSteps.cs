@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
 using Microsoft.Playwright;
 using OpenCartAutomation.Models;
-using OpenCartAutomation.Pages;
+using OpenCartAutomation.Pages.CommonElements;
 
 namespace OpenCartAutomation.Steps;
 

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Playwright;
 
-namespace OpenCartAutomation.Pages;
+namespace OpenCartAutomation.Pages.CommonElements;
 
 public class NavigationBarElement(ILocator locator)
 {

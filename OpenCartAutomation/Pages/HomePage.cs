@@ -1,4 +1,5 @@
 ﻿using Microsoft.Playwright;
+using OpenCartAutomation.Pages.CommonElements;
 
 namespace OpenCartAutomation.Pages;
 
@@ -7,7 +8,8 @@ public class HomePage(IPage page)
     private readonly ILocator _searchField = page.Locator("#search input");
     private readonly ILocator _searchButton = page.Locator("#search button");
     private readonly ILocator _featuredProducts = page.Locator(".product-layout");
-    private readonly ILocator _navigateBar = page.Locator("#menu");
+    private readonly ILocator _alertMessage = page.Locator(".alert-success");
+
     public  HeaderElement HeaderElement => new (page.Locator("#top"));
     public NavigationBarElement NavBar => new(page.Locator("#menu"));
 
@@ -21,6 +23,11 @@ public class HomePage(IPage page)
         await _searchButton.ClickAsync();
     }
 
+    public async Task<string> GetAlertMessage()
+    {
+        return await _alertMessage.InnerTextAsync();
+    }
+
     public async Task<List<ProductElement>> GetFeaturedProducts()
     {
         var productsLocator = await _featuredProducts.AllAsync();
@@ -31,5 +38,22 @@ public class HomePage(IPage page)
         }
 
         return productList;
+    }
+
+    public async Task AddProductToWishList(string productName)
+    {
+        var productsLocator = await _featuredProducts.AllAsync();
+        foreach (var locator in productsLocator)
+        {
+            var product = new ProductElement(locator);
+            if (product.GetTitle().Result != productName)
+            {
+                continue;
+            }
+            product.ClickToWishList().Wait();
+            return;
+        }
+
+        throw new ArgumentOutOfRangeException($"Product with title [{productName}] was not found");
     }
 }

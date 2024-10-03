@@ -1,6 +1,6 @@
 ﻿using Microsoft.Playwright;
 
-namespace OpenCartAutomation.Pages;
+namespace OpenCartAutomation.Pages.CommonElements;
 
 public class ProductElement(ILocator locator)
 {
@@ -8,8 +8,8 @@ public class ProductElement(ILocator locator)
     private readonly ILocator _title = locator.Locator(".caption a");
     private readonly ILocator _description = locator.Locator(".caption  p:first-of-type");
     private readonly ILocator _priceBlock = locator.Locator(".price");
-    private readonly ILocator _addToCart = locator.Locator(".//button[normalize-space(.)='Add to Cart']");
-    private readonly ILocator _addToWishList = locator.Locator(".//button[@data-original-title='Add to Wish List']");
+    private readonly ILocator _addToCart = locator.Locator("//button[normalize-space(.)='Add to Cart']");
+    private readonly ILocator _addToWishList = locator.Locator("//button[@data-original-title='Add to Wish List']");
 
     public async Task<string> GetTitle()
     {

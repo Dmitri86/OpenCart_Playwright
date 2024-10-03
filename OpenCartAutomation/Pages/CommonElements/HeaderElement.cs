@@ -1,6 +1,6 @@
 ﻿using Microsoft.Playwright;
 
-namespace OpenCartAutomation.Pages;
+namespace OpenCartAutomation.Pages.CommonElements;
 
 public class HeaderElement(ILocator locator)
 {
