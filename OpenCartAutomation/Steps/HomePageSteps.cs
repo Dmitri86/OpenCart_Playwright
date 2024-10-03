@@ -28,10 +28,23 @@ public class HomePageSteps(IPage page) : BaseSteps(page)
         return this;
     }
 
+    public HomePageSteps AddProductToCart(string productName)
+    {
+        _homePage.AddProductToCart(productName).Wait();
+        return this;
+    }
+
     public CategorySteps SelectCategory(string category, string subCategory)
     {
         _homePage.NavBar.SelectCategory(category, subCategory).Wait();
         return new CategorySteps(page);
+    }
+
+    public HomePageSteps VerifyCartStatusIsCorrect(string expectedStatus)
+    {
+        var actualStatus = _homePage.GetCartStatus().Result.Trim();
+        actualStatus.Should().Be(expectedStatus);
+        return this;
     }
 
     public HomePageSteps VerifyAlertMessageIsCorrect(string expectedMessage)
