@@ -1,6 +1,8 @@
 ﻿using FluentAssertions;
 using Microsoft.Playwright;
+using OpenCartAutomation.Core.Autofac;
 using OpenCartAutomation.Models;
+using OpenCartAutomation.Models.Configuration;
 using OpenCartAutomation.Pages.CommonElements;
 
 namespace OpenCartAutomation.Steps;
@@ -12,7 +14,8 @@ public abstract class BaseSteps(IPage page)
     public HomePageSteps LaunchOpenCart()
     {
         Page.SetViewportSizeAsync(1920, 1080);
-        Page.GotoAsync("https://naveenautomationlabs.com/opencart").Wait();
+        var url = DependencyResolver.Resolve<AppConfiguration>().OpenCartSetting.Url;
+        Page.GotoAsync(url).Wait();
         return new HomePageSteps(Page);
     }
 
