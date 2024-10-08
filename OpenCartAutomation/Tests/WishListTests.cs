@@ -1,9 +1,11 @@
-﻿using OpenCartAutomation.Steps;
+﻿using Allure.NUnit;
+using OpenCartAutomation.Steps;
 
 namespace OpenCartAutomation.Tests;
 
 [TestFixture]
-public class WishListTests : PageTest
+[AllureNUnit]
+public class WishListTests : BaseTest
 {
     [Test]
     public void VerifyOnlyAuthorizedUserCanAddProductToWishList()

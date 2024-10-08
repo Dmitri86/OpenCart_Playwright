@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RunSettings>
-  <Playwright> 
-    <ExpectTimeout>45000</ExpectTimeout>
+  <Playwright>
+    <ExpectTimeout>15000</ExpectTimeout>
     <LaunchOptions>
       <Headless>false</Headless>
       <SlowMo>750</SlowMo>

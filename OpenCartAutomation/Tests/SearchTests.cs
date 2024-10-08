@@ -1,10 +1,12 @@
-﻿using OpenCartAutomation.Models;
+﻿using Allure.NUnit;
+using OpenCartAutomation.Models;
 using OpenCartAutomation.Steps;
 
 namespace OpenCartAutomation.Tests;
 
 [TestFixture]
-public class SearchTests : PageTest
+[AllureNUnit]
+public class SearchTests : BaseTest
 {
     [TestCaseSource(nameof(SearchElements))]
     public void VerifyProductCanBeFound(KeyValuePair<string, List<ProductModel>> testData)

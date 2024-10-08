@@ -13,7 +13,6 @@ public abstract class BaseSteps(IPage page)
 
     public HomePageSteps LaunchOpenCart()
     {
-        Page.SetViewportSizeAsync(1920, 1080);
         var url = DependencyResolver.Resolve<AppConfiguration>().OpenCartSetting.Url;
         Page.GotoAsync(url).Wait();
         return new HomePageSteps(Page);

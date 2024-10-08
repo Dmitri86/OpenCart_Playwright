@@ -1,12 +1,16 @@
-﻿using OpenCartAutomation.Models;
+﻿using Allure.NUnit;
+using Allure.NUnit.Attributes;
+using OpenCartAutomation.Models;
 using OpenCartAutomation.Steps;
 
 namespace OpenCartAutomation.Tests;
 
 [TestFixture]
-public class FeaturedProductsTests : PageTest
+[AllureNUnit]
+public class FeaturedProductsTests : BaseTest
 {
     [Test]
+    [AllureDescription("Featured Products")]
     public void VerifyFeaturedProductsAreCorrect()
     {
         var expectedProducts = new List<ProductModel>

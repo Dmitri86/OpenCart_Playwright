@@ -1,13 +1,17 @@
-﻿using OpenCartAutomation.Core.Autofac;
+﻿using Allure.NUnit;
+using Allure.NUnit.Attributes;
+using OpenCartAutomation.Core.Autofac;
 using OpenCartAutomation.Models;
 using OpenCartAutomation.Steps;
 
 namespace OpenCartAutomation.Tests;
 
 [TestFixture]
-public class LoginTests : PageTest
+[AllureNUnit]
+public class LoginTests : BaseTest
 {
     [Test]
+    [AllureDescription("Verify User can Login")]
     public void VerifyUserCanLogin()
     {
         var testUser = DependencyResolver.Resolve<UserModel>();

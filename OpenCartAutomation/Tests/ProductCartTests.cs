@@ -1,9 +1,11 @@
-﻿using OpenCartAutomation.Steps;
+﻿using Allure.NUnit;
+using OpenCartAutomation.Steps;
 
 namespace OpenCartAutomation.Tests;
 
 [TestFixture]
-public class ProductCartTests : PageTest
+[AllureNUnit]
+public class ProductCartTests : BaseTest
 {
     [TestCaseSource(nameof(TestData))]
     public void VerifyUserCanAddFeaturedProductToCart(KeyValuePair<string, string> testData)

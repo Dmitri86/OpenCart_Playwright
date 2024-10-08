@@ -1,10 +1,12 @@
-﻿using OpenCartAutomation.Models;
+﻿using Allure.NUnit;
+using OpenCartAutomation.Models;
 using OpenCartAutomation.Steps;
 
 namespace OpenCartAutomation.Tests;
 
 [TestFixture]
-public class NavigationBarTests : PageTest
+[AllureNUnit]
+public class NavigationBarTests : BaseTest
 {
     [TestCaseSource(nameof(NavigationMenuTestData))]
     public void VerifyNavigationMenu(KeyValuePair<(string, string), List<ProductModel>> testData)
