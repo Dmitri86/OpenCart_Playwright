@@ -7,18 +7,18 @@ namespace OpenCartAutomation.Steps;
 
 public class SearchResultSteps(IPage page) : BaseSteps(page)
 {
-    private readonly SearchResultPage _searchResultPage = new(page);
+    private SearchResultPage SearchResultPage => On<SearchResultPage>();
 
     public SearchResultSteps VerifySearchTitleIsCorrect(string expectedTitle)
     {
-        var actualTitle = _searchResultPage.GetSearchTitle().Result;
+        var actualTitle = SearchResultPage.GetSearchTitle().Result;
         actualTitle.Should().Be(expectedTitle);
         return this;
     }
 
     public SearchResultSteps VerifyFoundProducts(IList<ProductModel> expectedProducts)
     {
-        var actualProductsElements = _searchResultPage.GetFoundProducts().Result;
+        var actualProductsElements = SearchResultPage.GetFoundProducts().Result;
         VerifyProductsAreEqual(actualProductsElements, expectedProducts);
         return this;
     }

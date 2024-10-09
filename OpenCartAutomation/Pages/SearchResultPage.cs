@@ -3,19 +3,19 @@ using OpenCartAutomation.Pages.CommonElements;
 
 namespace OpenCartAutomation.Pages;
 
-public class SearchResultPage(IPage page)
+public class SearchResultPage : WebPage
 {
-    private readonly ILocator _searchTitle = page.Locator("#content h1");
-    private readonly ILocator _foundProducts = page.Locator(".product-layout");
+    private  ILocator SearchTitle => Page.Locator("#content h1");
+    private  ILocator FoundProducts => Page.Locator(".product-layout");
 
     public async Task<string> GetSearchTitle()
     {
-        return await _searchTitle.InnerTextAsync();
+        return await SearchTitle.InnerTextAsync();
     }
 
     public async Task<List<ProductElement>> GetFoundProducts()
     {
-        var productsLocator =  await _foundProducts.AllAsync();
+        var productsLocator =  await FoundProducts.AllAsync();
         var productList = new List<ProductElement>();
         foreach (var locator in productsLocator)
         {

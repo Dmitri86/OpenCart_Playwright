@@ -6,13 +6,13 @@ namespace OpenCartAutomation.Steps;
 
 public class LoginSteps(IPage page) : BaseSteps(page)
 {
-    private readonly LoginPage _loginPage = new (page);
+    private LoginPage LoginPage => On<LoginPage>();
 
     public AccountPageSteps LoginUser(UserModel user)
     {
-        _loginPage.SetEmail(user.Email).Wait();
-        _loginPage.SetPassword(user.Password).Wait();
-        _loginPage.ClickLogin().Wait();
+        LoginPage.SetEmail(user.Email).Wait();
+        LoginPage.SetPassword(user.Password).Wait();
+        LoginPage.ClickLogin().Wait();
         return new AccountPageSteps(page);
     }
 }

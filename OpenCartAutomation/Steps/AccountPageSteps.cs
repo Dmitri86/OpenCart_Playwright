@@ -6,11 +6,11 @@ namespace OpenCartAutomation.Steps;
 
 public class AccountPageSteps(IPage page) : BaseSteps(page)
 {
-    private readonly AccountPage _accountPage = new (page);
+    private AccountPage AccountPage => On<AccountPage>();
 
     public AccountPageSteps VerifyAccountPageIsOpen()
     {
-        _accountPage.EditYourAccountInformationIsVisible().Result.Should().BeTrue();
+        AccountPage.EditYourAccountInformationIsVisible().Result.Should().BeTrue();
         return this;
     }
 }

@@ -3,40 +3,40 @@ using OpenCartAutomation.Pages.CommonElements;
 
 namespace OpenCartAutomation.Pages;
 
-public class HomePage(IPage page)
+public class HomePage : WebPage
 {
-    private readonly ILocator _searchField = page.Locator("#search input");
-    private readonly ILocator _searchButton = page.Locator("#search button");
-    private readonly ILocator _cartStatus = page.Locator("#cart-total");
-    private readonly ILocator _featuredProducts = page.Locator(".product-layout");
-    private readonly ILocator _alertMessage = page.Locator(".alert-success");
+    private  ILocator SearchField => Page.Locator("#search input");
+    private  ILocator SearchButton => Page.Locator("#search button");
+    private  ILocator CartStatus => Page.Locator("#cart-total");
+    private  ILocator FeaturedProducts => Page.Locator(".product-layout");
+    private  ILocator AlertMessage => Page.Locator(".alert-success");
 
-    public  HeaderElement HeaderElement => new (page.Locator("#top"));
-    public NavigationBarElement NavBar => new(page.Locator("#menu"));
+    public  HeaderElement HeaderElement => new (Page.Locator("#top"));
+    public NavigationBarElement NavBar => new(Page.Locator("#menu"));
 
     public async Task TypeSearchText(string searchText)
     {
-        await _searchField.FillAsync(searchText);
+        await SearchField.FillAsync(searchText);
     }
 
     public async Task ClickSearchButton()
     {
-        await _searchButton.ClickAsync();
+        await SearchButton.ClickAsync();
     }
 
     public async Task<string> GetCartStatus()
     {
-        return await _cartStatus.InnerTextAsync();
+        return await CartStatus.InnerTextAsync();
     }
 
     public async Task<string> GetAlertMessage()
     {
-        return await _alertMessage.InnerTextAsync();
+        return await AlertMessage.InnerTextAsync();
     }
 
     public async Task<List<ProductElement>> GetFeaturedProducts()
     {
-        var productsLocator = await _featuredProducts.AllAsync();
+        var productsLocator = await FeaturedProducts.AllAsync();
         var productList = new List<ProductElement>();
         foreach (var locator in productsLocator)
         {
@@ -48,7 +48,7 @@ public class HomePage(IPage page)
 
     public async Task AddProductToWishList(string productName)
     {
-        var productsLocator = await _featuredProducts.AllAsync();
+        var productsLocator = await FeaturedProducts.AllAsync();
         foreach (var locator in productsLocator)
         {
             var product = new ProductElement(locator);
@@ -65,7 +65,7 @@ public class HomePage(IPage page)
 
     public async Task AddProductToCart(string productName)
     {
-        var productsLocator = await _featuredProducts.AllAsync();
+        var productsLocator = await FeaturedProducts.AllAsync();
         foreach (var locator in productsLocator)
         {
             var product = new ProductElement(locator);
