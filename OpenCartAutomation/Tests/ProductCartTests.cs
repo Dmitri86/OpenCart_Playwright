@@ -19,6 +19,7 @@ public class ProductCartTests : BaseTest
             .VerifyCartStatusIsCorrect(emptyCart)
             .AddProductToCart(productName)
             .VerifyAlertMessageIsCorrect(expectedAlertMessage)
+            .WaitCartIsNotEmpty()
             .VerifyCartStatusIsCorrect(filledCart);
     }
 

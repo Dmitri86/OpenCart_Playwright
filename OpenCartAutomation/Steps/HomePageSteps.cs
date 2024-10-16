@@ -40,6 +40,12 @@ public class HomePageSteps(IPage page) : BaseSteps(page)
         return new CategorySteps(page);
     }
 
+    public HomePageSteps WaitCartIsNotEmpty()
+    {
+        HomePage.WaitForCartIsNotEmpty().Wait();
+        return this;
+    }
+
     public HomePageSteps VerifyCartStatusIsCorrect(string expectedStatus)
     {
         var actualStatus = HomePage.GetCartStatus().Result.Trim();

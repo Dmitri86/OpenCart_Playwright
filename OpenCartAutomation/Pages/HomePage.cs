@@ -10,6 +10,7 @@ public class HomePage : WebPage
     private  ILocator CartStatus => Page.Locator("#cart-total");
     private  ILocator FeaturedProducts => Page.Locator(".product-layout");
     private  ILocator AlertMessage => Page.Locator(".alert-success");
+    private ILocator EmptyCart => Page.GetByText("Your shopping cart is empty!");
 
     public  HeaderElement HeaderElement => new (Page.Locator("#top"));
     public NavigationBarElement NavBar => new(Page.Locator("#menu"));
@@ -27,6 +28,15 @@ public class HomePage : WebPage
     public async Task<string> GetCartStatus()
     {
         return await CartStatus.InnerTextAsync();
+    }
+
+    public async Task WaitForCartIsNotEmpty()
+    {
+        await EmptyCart.WaitForAsync(new LocatorWaitForOptions
+        {
+            State = WaitForSelectorState.Hidden,
+            Timeout = 1000
+        });
     }
 
     public async Task<string> GetAlertMessage()
