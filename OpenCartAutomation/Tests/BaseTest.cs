@@ -5,6 +5,7 @@ using System.Reflection;
 
 namespace OpenCartAutomation.Tests;
 
+[Parallelizable(ParallelScope.Fixtures)]
 public abstract class BaseTest : PageTest
 {
     [SetUp]
